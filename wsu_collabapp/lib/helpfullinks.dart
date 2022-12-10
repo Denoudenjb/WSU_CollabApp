@@ -28,25 +28,23 @@ class _HelpfulLinksState extends State<HelpfulLinks> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 TextFormField(
+                   decoration: const InputDecoration(
+                  hintText: "Title"),
                   controller: _controller,
                 ),
                 TextFormField(
+                  decoration: const InputDecoration(
+                  hintText: "URL"),
                   controller: _controller2,
                 ),
                 TextButton(
                   onPressed: () {
                     setState(() {
-                      if (_controller.text.isNotEmpty &&
-                          _controller2.text.isNotEmpty) {
-                        text1.add(
-                          _controller.text,
-                        );
-                        text2.add(
-                          _controller2.text,
-                        );
-                        _controller.clear();
-                        _controller2.clear();
-                      } else {
+                      if (_controller.text.isNotEmpty & _controller2.text.isNotEmpty) 
+                      {text1.add(_controller.text,);text2.add(_controller2.text,);
+                        _controller.clear();_controller2.clear();} 
+                        
+                        else {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text("Input Text is empty"),
                         ));
@@ -57,12 +55,14 @@ class _HelpfulLinksState extends State<HelpfulLinks> {
                 ),
                 
                 Row(
-                   children: <Widget>[Flexible(
-                    child: Text(text1.isNotEmpty ? text1.toString() : ""),
-                  ),
-                     Flexible(
-                  child: Text(text2.isNotEmpty ? text2.toString() : ""),
-                  ),
+                   children: <Widget>[SizedBox(
+                    width: 95,
+                    child: Expanded(child: Text(text1.isNotEmpty ? text1.toString() : ""),
+                  )),
+                     SizedBox(
+                      width: 125,
+                  child: Expanded(child: Text(text2.isNotEmpty ? text2.toString() : ""),
+                  )),
 
 
 
